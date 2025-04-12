@@ -1,6 +1,9 @@
 # Tutorials
 ## Blogs
 * Fun with Apache Nifi: https://funnifi.blogspot.com/2016/02/executescript-processor-hello-world.html
+  * Notice GitHub Gist url
+    * https://funnifi.blogspot.com/2016/03/executescript-json-to-json-revisited.html
+    * https://gist.github.com/mattyb149/7cdac64e1d5949234d98
 * ITHome:
   * https://ithelp.ithome.com.tw/articles/10267432
   * code: https://github.com/hueiyuan/nifi-it30/tree/main/nifi_project/single_node_for_docker
