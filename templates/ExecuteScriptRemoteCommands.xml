@@ -1,0 +1,736 @@
+<?xml version="1.0" ?>
+<template encoding-version="1.0">
+  <description>This template shows how to use ExecuteScript with Groovy and Sshoogr to execute commands (from an incoming flow file) on a remote system (via SSH).
+
+To use, replace the values in ExecuteScript for your remote system (sshHostname, sshUsername, sshPassword, sshPort), and replace the GenerateFlowFile processor (and the associated ReplaceText processor) with your flow that produces files with lines of commands to run remotely.</description>
+  <groupId>71f9bd06-0156-1000-783e-41e29ccff3d8</groupId>
+  <name>ExecuteScriptRemoteCommands</name>
+  <snippet>
+    <connections>
+      <id>7492dda1-0156-1000-0000-000000000000</id>
+      <parentGroupId>71f9bd06-0156-1000-0000-000000000000</parentGroupId>
+      <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+      <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+      <bends>
+        <x>357.0</x>
+        <y>631.0</y>
+      </bends>
+      <destination>
+        <groupId>71f9bd06-0156-1000-0000-000000000000</groupId>
+        <id>7492b587-0156-1000-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </destination>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <labelIndex>0</labelIndex>
+      <name></name>
+      <selectedRelationships>success</selectedRelationships>
+      <source>
+        <groupId>71f9bd06-0156-1000-0000-000000000000</groupId>
+        <id>7490b268-0156-1000-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </source>
+      <zIndex>0</zIndex>
+    </connections>
+    <connections>
+      <id>74aa48c3-0156-1000-0000-000000000000</id>
+      <parentGroupId>71f9bd06-0156-1000-0000-000000000000</parentGroupId>
+      <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+      <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+      <bends>
+        <x>27.0</x>
+        <y>638.0</y>
+      </bends>
+      <destination>
+        <groupId>71f9bd06-0156-1000-0000-000000000000</groupId>
+        <id>7492b587-0156-1000-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </destination>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <labelIndex>1</labelIndex>
+      <name></name>
+      <selectedRelationships>failure</selectedRelationships>
+      <source>
+        <groupId>71f9bd06-0156-1000-0000-000000000000</groupId>
+        <id>7490b268-0156-1000-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </source>
+      <zIndex>0</zIndex>
+    </connections>
+    <connections>
+      <id>74c0c5e7-0156-1000-0000-000000000000</id>
+      <parentGroupId>71f9bd06-0156-1000-0000-000000000000</parentGroupId>
+      <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+      <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+      <destination>
+        <groupId>71f9bd06-0156-1000-0000-000000000000</groupId>
+        <id>74c07bf5-0156-1000-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </destination>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <labelIndex>1</labelIndex>
+      <name></name>
+      <selectedRelationships>success</selectedRelationships>
+      <source>
+        <groupId>71f9bd06-0156-1000-0000-000000000000</groupId>
+        <id>74c06dde-0156-1000-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </source>
+      <zIndex>0</zIndex>
+    </connections>
+    <connections>
+      <id>74c0f7d0-0156-1000-0000-000000000000</id>
+      <parentGroupId>71f9bd06-0156-1000-0000-000000000000</parentGroupId>
+      <backPressureDataSizeThreshold>1 GB</backPressureDataSizeThreshold>
+      <backPressureObjectThreshold>10000</backPressureObjectThreshold>
+      <destination>
+        <groupId>71f9bd06-0156-1000-0000-000000000000</groupId>
+        <id>7490b268-0156-1000-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </destination>
+      <flowFileExpiration>0 sec</flowFileExpiration>
+      <labelIndex>1</labelIndex>
+      <name></name>
+      <selectedRelationships>success</selectedRelationships>
+      <source>
+        <groupId>71f9bd06-0156-1000-0000-000000000000</groupId>
+        <id>74c07bf5-0156-1000-0000-000000000000</id>
+        <type>PROCESSOR</type>
+      </source>
+      <zIndex>0</zIndex>
+    </connections>
+    <processors>
+      <id>7490b268-0156-1000-0000-000000000000</id>
+      <parentGroupId>71f9bd06-0156-1000-0000-000000000000</parentGroupId>
+      <position>
+        <x>2.0</x>
+        <y>437.0</y>
+      </position>
+      <config>
+        <bulletinLevel>WARN</bulletinLevel>
+        <comments></comments>
+        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+        <descriptors>
+          <entry>
+            <key>Script Engine</key>
+            <value>
+              <allowableValues>
+                <displayName>ECMAScript</displayName>
+                <value>ECMAScript</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>Groovy</displayName>
+                <value>Groovy</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>lua</displayName>
+                <value>lua</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>python</displayName>
+                <value>python</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>ruby</displayName>
+                <value>ruby</value>
+              </allowableValues>
+              <defaultValue>ECMAScript</defaultValue>
+              <description>The engine to execute scripts</description>
+              <displayName>Script Engine</displayName>
+              <dynamic>false</dynamic>
+              <name>Script Engine</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Script File</key>
+            <value>
+              <description>Path to script file to execute. Only one of Script File or Script Body may be used</description>
+              <displayName>Script File</displayName>
+              <dynamic>false</dynamic>
+              <name>Script File</name>
+              <required>false</required>
+              <sensitive>false</sensitive>
+              <supportsEl>true</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Script Body</key>
+            <value>
+              <description>Body of script to execute. Only one of Script File or Script Body may be used</description>
+              <displayName>Script Body</displayName>
+              <dynamic>false</dynamic>
+              <name>Script Body</name>
+              <required>false</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Module Directory</key>
+            <value>
+              <description>Comma-separated list of paths to files and/or directories which contain modules required by the script.</description>
+              <displayName>Module Directory</displayName>
+              <dynamic>false</dynamic>
+              <name>Module Directory</name>
+              <required>false</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>sshHostname</key>
+            <value>
+              <description></description>
+              <displayName>sshHostname</displayName>
+              <dynamic>true</dynamic>
+              <name>sshHostname</name>
+              <required>false</required>
+              <sensitive>false</sensitive>
+              <supportsEl>true</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>sshPassword</key>
+            <value>
+              <description></description>
+              <displayName>sshPassword</displayName>
+              <dynamic>true</dynamic>
+              <name>sshPassword</name>
+              <required>false</required>
+              <sensitive>false</sensitive>
+              <supportsEl>true</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>sshPort</key>
+            <value>
+              <description></description>
+              <displayName>sshPort</displayName>
+              <dynamic>true</dynamic>
+              <name>sshPort</name>
+              <required>false</required>
+              <sensitive>false</sensitive>
+              <supportsEl>true</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>sshUsername</key>
+            <value>
+              <description></description>
+              <displayName>sshUsername</displayName>
+              <dynamic>true</dynamic>
+              <name>sshUsername</name>
+              <required>false</required>
+              <sensitive>false</sensitive>
+              <supportsEl>true</supportsEl>
+            </value>
+          </entry>
+        </descriptors>
+        <lossTolerant>false</lossTolerant>
+        <penaltyDuration>30 sec</penaltyDuration>
+        <properties>
+          <entry>
+            <key>Script Engine</key>
+            <value>Groovy</value>
+          </entry>
+          <entry>
+            <key>Script File</key>
+          </entry>
+          <entry>
+            <key>Script Body</key>
+            <value>import static com.aestasit.infrastructure.ssh.DefaultSsh.*
+
+def flowFile = session.get()
+if(!flowFile) return
+
+def commands = []
+// Read in one command per line
+session.read(flowFile, {inputStream -&gt;
+    inputStream.eachLine { line -&gt; commands &lt;&lt; line  }
+} as InputStreamCallback)
+
+options.trustUnknownHosts = true
+def result = null
+remoteSession {
+
+   host = sshHostname.value
+   username = sshUsername.value
+   password = sshPassword.value
+   port = Integer.parseInt(sshPort.value)
+        
+   result = exec(showOutput: true, failOnError: false, command: commands.join('\n'))
+}
+
+flowFile = session.write(flowFile, { outputStream -&gt;
+    result?.output?.eachLine { line -&gt;
+       outputStream.write(line.bytes)
+       outputStream.write('\n'.bytes)
+    }
+} as OutputStreamCallback)
+
+session.transfer(flowFile, result?.exitStatus ? REL_FAILURE : REL_SUCCESS)</value>
+          </entry>
+          <entry>
+            <key>Module Directory</key>
+            <value>/Users/mburgess/Downloads/sshoogr-0.9.25/lib</value>
+          </entry>
+          <entry>
+            <key>sshHostname</key>
+            <value>sandbox.hortonworks.com</value>
+          </entry>
+          <entry>
+            <key>sshPassword</key>
+            <value>hadoop</value>
+          </entry>
+          <entry>
+            <key>sshPort</key>
+            <value>22</value>
+          </entry>
+          <entry>
+            <key>sshUsername</key>
+            <value>root</value>
+          </entry>
+        </properties>
+        <runDurationMillis>0</runDurationMillis>
+        <schedulingPeriod>0 sec</schedulingPeriod>
+        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+        <yieldDuration>1 sec</yieldDuration>
+      </config>
+      <name>ExecuteScript</name>
+      <relationships>
+        <autoTerminate>false</autoTerminate>
+        <name>failure</name>
+      </relationships>
+      <relationships>
+        <autoTerminate>false</autoTerminate>
+        <name>success</name>
+      </relationships>
+      <style></style>
+      <type>org.apache.nifi.processors.script.ExecuteScript</type>
+    </processors>
+    <processors>
+      <id>7492b587-0156-1000-0000-000000000000</id>
+      <parentGroupId>71f9bd06-0156-1000-0000-000000000000</parentGroupId>
+      <position>
+        <x>0.0</x>
+        <y>722.0</y>
+      </position>
+      <config>
+        <bulletinLevel>WARN</bulletinLevel>
+        <comments></comments>
+        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+        <descriptors>
+          <entry>
+            <key>Log Level</key>
+            <value>
+              <allowableValues>
+                <displayName>trace</displayName>
+                <value>trace</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>debug</displayName>
+                <value>debug</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>info</displayName>
+                <value>info</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>warn</displayName>
+                <value>warn</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>error</displayName>
+                <value>error</value>
+              </allowableValues>
+              <defaultValue>info</defaultValue>
+              <description>The Log Level to use when logging the Attributes</description>
+              <displayName>Log Level</displayName>
+              <dynamic>false</dynamic>
+              <name>Log Level</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Log Payload</key>
+            <value>
+              <allowableValues>
+                <displayName>true</displayName>
+                <value>true</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>false</displayName>
+                <value>false</value>
+              </allowableValues>
+              <defaultValue>false</defaultValue>
+              <description>If true, the FlowFile's payload will be logged, in addition to its attributes; otherwise, just the Attributes will be logged.</description>
+              <displayName>Log Payload</displayName>
+              <dynamic>false</dynamic>
+              <name>Log Payload</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Attributes to Log</key>
+            <value>
+              <description>A comma-separated list of Attributes to Log. If not specified, all attributes will be logged.</description>
+              <displayName>Attributes to Log</displayName>
+              <dynamic>false</dynamic>
+              <name>Attributes to Log</name>
+              <required>false</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Attributes to Ignore</key>
+            <value>
+              <description>A comma-separated list of Attributes to ignore. If not specified, no attributes will be ignored.</description>
+              <displayName>Attributes to Ignore</displayName>
+              <dynamic>false</dynamic>
+              <name>Attributes to Ignore</name>
+              <required>false</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Log prefix</key>
+            <value>
+              <description>Log prefix appended to the log lines. It helps to distinguish the output of multiple LogAttribute processors.</description>
+              <displayName>Log prefix</displayName>
+              <dynamic>false</dynamic>
+              <name>Log prefix</name>
+              <required>false</required>
+              <sensitive>false</sensitive>
+              <supportsEl>true</supportsEl>
+            </value>
+          </entry>
+        </descriptors>
+        <lossTolerant>false</lossTolerant>
+        <penaltyDuration>30 sec</penaltyDuration>
+        <properties>
+          <entry>
+            <key>Log Level</key>
+            <value>info</value>
+          </entry>
+          <entry>
+            <key>Log Payload</key>
+            <value>true</value>
+          </entry>
+          <entry>
+            <key>Attributes to Log</key>
+          </entry>
+          <entry>
+            <key>Attributes to Ignore</key>
+          </entry>
+          <entry>
+            <key>Log prefix</key>
+          </entry>
+        </properties>
+        <runDurationMillis>0</runDurationMillis>
+        <schedulingPeriod>0 sec</schedulingPeriod>
+        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+        <yieldDuration>1 sec</yieldDuration>
+      </config>
+      <name>LogAttribute</name>
+      <relationships>
+        <autoTerminate>true</autoTerminate>
+        <name>success</name>
+      </relationships>
+      <style></style>
+      <type>org.apache.nifi.processors.standard.LogAttribute</type>
+    </processors>
+    <processors>
+      <id>74c06dde-0156-1000-0000-000000000000</id>
+      <parentGroupId>71f9bd06-0156-1000-0000-000000000000</parentGroupId>
+      <position>
+        <x>0.0</x>
+        <y>0.0</y>
+      </position>
+      <config>
+        <bulletinLevel>WARN</bulletinLevel>
+        <comments></comments>
+        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+        <descriptors>
+          <entry>
+            <key>File Size</key>
+            <value>
+              <description>The size of the file that will be used</description>
+              <displayName>File Size</displayName>
+              <dynamic>false</dynamic>
+              <name>File Size</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Batch Size</key>
+            <value>
+              <defaultValue>1</defaultValue>
+              <description>The number of FlowFiles to be transferred in each invocation</description>
+              <displayName>Batch Size</displayName>
+              <dynamic>false</dynamic>
+              <name>Batch Size</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Data Format</key>
+            <value>
+              <allowableValues>
+                <displayName>Binary</displayName>
+                <value>Binary</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>Text</displayName>
+                <value>Text</value>
+              </allowableValues>
+              <defaultValue>Binary</defaultValue>
+              <description>Specifies whether the data should be Text or Binary</description>
+              <displayName>Data Format</displayName>
+              <dynamic>false</dynamic>
+              <name>Data Format</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Unique FlowFiles</key>
+            <value>
+              <allowableValues>
+                <displayName>true</displayName>
+                <value>true</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>false</displayName>
+                <value>false</value>
+              </allowableValues>
+              <defaultValue>false</defaultValue>
+              <description>If true, each FlowFile that is generated will be unique. If false, a random value will be generated and all FlowFiles will get the same content but this offers much higher throughput</description>
+              <displayName>Unique FlowFiles</displayName>
+              <dynamic>false</dynamic>
+              <name>Unique FlowFiles</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+        </descriptors>
+        <lossTolerant>false</lossTolerant>
+        <penaltyDuration>30 sec</penaltyDuration>
+        <properties>
+          <entry>
+            <key>File Size</key>
+            <value>0B</value>
+          </entry>
+          <entry>
+            <key>Batch Size</key>
+            <value>1</value>
+          </entry>
+          <entry>
+            <key>Data Format</key>
+            <value>Text</value>
+          </entry>
+          <entry>
+            <key>Unique FlowFiles</key>
+            <value>false</value>
+          </entry>
+        </properties>
+        <runDurationMillis>0</runDurationMillis>
+        <schedulingPeriod>10 sec</schedulingPeriod>
+        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+        <yieldDuration>1 sec</yieldDuration>
+      </config>
+      <name>GenerateFlowFile</name>
+      <relationships>
+        <autoTerminate>false</autoTerminate>
+        <name>success</name>
+      </relationships>
+      <style></style>
+      <type>org.apache.nifi.processors.standard.GenerateFlowFile</type>
+    </processors>
+    <processors>
+      <id>74c07bf5-0156-1000-0000-000000000000</id>
+      <parentGroupId>71f9bd06-0156-1000-0000-000000000000</parentGroupId>
+      <position>
+        <x>1.0</x>
+        <y>218.0</y>
+      </position>
+      <config>
+        <bulletinLevel>WARN</bulletinLevel>
+        <comments></comments>
+        <concurrentlySchedulableTaskCount>1</concurrentlySchedulableTaskCount>
+        <descriptors>
+          <entry>
+            <key>Regular Expression</key>
+            <value>
+              <defaultValue>(?s:^.*$)</defaultValue>
+              <description>The Search Value to search for in the FlowFile content. Only used for 'Literal Replace' and 'Regex Replace' matching strategies</description>
+              <displayName>Search Value</displayName>
+              <dynamic>false</dynamic>
+              <name>Regular Expression</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>true</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Replacement Value</key>
+            <value>
+              <defaultValue>$1</defaultValue>
+              <description>The value to insert using the 'Replacement Strategy'. Using "Regex Replace" back-references to Regular Expression capturing groups are supported, but back-references that reference capturing groups that do not exist in the regular expression will be treated as literal value. Back References may also be referenced using the Expression Language, as '$1', '$2', etc. The single-tick marks MUST be included, as these variables are not "Standard" attribute names (attribute names must be quoted unless they contain only numbers, letters, and _).</description>
+              <displayName>Replacement Value</displayName>
+              <dynamic>false</dynamic>
+              <name>Replacement Value</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>true</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Character Set</key>
+            <value>
+              <defaultValue>UTF-8</defaultValue>
+              <description>The Character Set in which the file is encoded</description>
+              <displayName>Character Set</displayName>
+              <dynamic>false</dynamic>
+              <name>Character Set</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Maximum Buffer Size</key>
+            <value>
+              <defaultValue>1 MB</defaultValue>
+              <description>Specifies the maximum amount of data to buffer (per file or per line, depending on the Evaluation Mode) in order to apply the replacement. If 'Entire Text' (in Evaluation Mode) is selected and the FlowFile is larger than this value, the FlowFile will be routed to 'failure'. In 'Line-by-Line' Mode, if a single line is larger than this value, the FlowFile will be routed to 'failure'. A default value of 1 MB is provided, primarily for 'Entire Text' mode. In 'Line-by-Line' Mode, a value such as 8 KB or 16 KB is suggested. This value is ignored if the &lt;Replacement Strategy&gt; property is set to one of: Append, Prepend, Always Replace</description>
+              <displayName>Maximum Buffer Size</displayName>
+              <dynamic>false</dynamic>
+              <name>Maximum Buffer Size</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Replacement Strategy</key>
+            <value>
+              <allowableValues>
+                <description>Insert the Replacement Value at the beginning of the FlowFile or the beginning of each line (depending on the Evaluation Mode). For "Line-by-Line" Evaluation Mode, the value will be prepended to each line. For "Entire Text" evaluation mode, the value will be prepended to the entire text.</description>
+                <displayName>Prepend</displayName>
+                <value>Prepend</value>
+              </allowableValues>
+              <allowableValues>
+                <description>Insert the Replacement Value at the end of the FlowFile or the end of each line (depending on the Evluation Mode). For "Line-by-Line" Evaluation Mode, the value will be appended to each line. For "Entire Text" evaluation mode, the value will be appended to the entire text.</description>
+                <displayName>Append</displayName>
+                <value>Append</value>
+              </allowableValues>
+              <allowableValues>
+                <description>Interpret the Search Value as a Regular Expression and replace all matches with the Replacement Value. The Replacement Value may reference Capturing Groups used in the Search Value by using a dollar-sign followed by the Capturing Group number, such as $1 or $2. If the Search Value is set to .* then everything is replaced without even evaluating the Regular Expression.</description>
+                <displayName>Regex Replace</displayName>
+                <value>Regex Replace</value>
+              </allowableValues>
+              <allowableValues>
+                <description>Search for all instances of the Search Value and replace the matches with the Replacement Value.</description>
+                <displayName>Literal Replace</displayName>
+                <value>Literal Replace</value>
+              </allowableValues>
+              <allowableValues>
+                <description>Always replaces the entire line or the entire contents of the FlowFile (depending on the value of the &lt;Evaluation Mode&gt; property) and does not bother searching for any value. When this strategy is chosen, the &lt;Search Value&gt; property is ignored.</description>
+                <displayName>Always Replace</displayName>
+                <value>Always Replace</value>
+              </allowableValues>
+              <defaultValue>Regex Replace</defaultValue>
+              <description>The strategy for how and what to replace within the FlowFile's text content.</description>
+              <displayName>Replacement Strategy</displayName>
+              <dynamic>false</dynamic>
+              <name>Replacement Strategy</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+          <entry>
+            <key>Evaluation Mode</key>
+            <value>
+              <allowableValues>
+                <displayName>Line-by-Line</displayName>
+                <value>Line-by-Line</value>
+              </allowableValues>
+              <allowableValues>
+                <displayName>Entire text</displayName>
+                <value>Entire text</value>
+              </allowableValues>
+              <defaultValue>Entire text</defaultValue>
+              <description>Run the 'Replacement Strategy' against each line separately (Line-by-Line) or buffer the entire file into memory (Entire Text) and run against that.</description>
+              <displayName>Evaluation Mode</displayName>
+              <dynamic>false</dynamic>
+              <name>Evaluation Mode</name>
+              <required>true</required>
+              <sensitive>false</sensitive>
+              <supportsEl>false</supportsEl>
+            </value>
+          </entry>
+        </descriptors>
+        <lossTolerant>false</lossTolerant>
+        <penaltyDuration>30 sec</penaltyDuration>
+        <properties>
+          <entry>
+            <key>Regular Expression</key>
+            <value>(?s:^.*$)</value>
+          </entry>
+          <entry>
+            <key>Replacement Value</key>
+            <value>hadoop fs -ls /user
+echo "Hello World!" &gt; here_i_am.txt
+</value>
+          </entry>
+          <entry>
+            <key>Character Set</key>
+            <value>UTF-8</value>
+          </entry>
+          <entry>
+            <key>Maximum Buffer Size</key>
+            <value>1 MB</value>
+          </entry>
+          <entry>
+            <key>Replacement Strategy</key>
+            <value>Regex Replace</value>
+          </entry>
+          <entry>
+            <key>Evaluation Mode</key>
+            <value>Entire text</value>
+          </entry>
+        </properties>
+        <runDurationMillis>0</runDurationMillis>
+        <schedulingPeriod>0 sec</schedulingPeriod>
+        <schedulingStrategy>TIMER_DRIVEN</schedulingStrategy>
+        <yieldDuration>1 sec</yieldDuration>
+      </config>
+      <name>ReplaceText</name>
+      <relationships>
+        <autoTerminate>true</autoTerminate>
+        <name>failure</name>
+      </relationships>
+      <relationships>
+        <autoTerminate>false</autoTerminate>
+        <name>success</name>
+      </relationships>
+      <style></style>
+      <type>org.apache.nifi.processors.standard.ReplaceText</type>
+    </processors>
+  </snippet>
+  <timestamp>08/10/2016 15:09:05 EDT</timestamp>
+</template>
