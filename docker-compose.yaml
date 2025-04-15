@@ -4,7 +4,7 @@ services:
     zookeeper:
         hostname: myzookeeper
         container_name: zookeeper_container_persistent
-        image: 'bitnami/zookeeper:3.7.0'
+        image: 'bitnami/zookeeper:3.7.2'
         restart: on-failure
         environment:
            - ALLOW_ANONYMOUS_LOGIN=yes
@@ -15,7 +15,7 @@ services:
     registry:
         hostname: myregistry
         container_name: registry_container_persistent
-        image: 'apache/nifi-registry:1.26.0'  
+        image: 'apache/nifi-registry:1.28.1'  
         restart: on-failure
         ports:
            - "18080:18080"
@@ -34,7 +34,7 @@ services:
     nifi:
         hostname: mynifi
         container_name: nifi_container_persistent
-        image: 'apache/nifi:1.26.0'
+        image: 'apache/nifi:1.28.1'
         restart: on-failure
         ports:
            - '8091:8080'
